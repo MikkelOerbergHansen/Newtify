@@ -3,7 +3,7 @@ DPD - Digital Product Development, module 3: The Startup Way
 
 This is the front page for the ressources regarding our digital product.
 
-##Problem Definition
+##Problem Definition ho
 Only 1% of (music industry) artists make all the money and users can't really decide where their montly payment go in the big convenient streaming platforms.
 
 #Challenges
@@ -23,7 +23,7 @@ Challenge 4 - Legal
 
 Selected Challenges
 Challenge 1
-Challenge 3 hi
+Challenge 3
 
 
 Ideas\
