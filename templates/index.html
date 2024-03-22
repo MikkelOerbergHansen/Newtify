@@ -1,0 +1,63 @@
+```html
+{% extends 'base.html' %}
+{% block body %}
+        <section class="portfolio-block block-intro"><img src="static/img/album-cover-logo.jpg">
+            <div class="container">
+                <div class="about-me">
+                    <p><strong>TRUE</strong> Danish Black Metal, Nymåne</a>
+                </div>
+                <button onclick="toggleMusic()">Play</button>
+                <div id="progress-bar-container">
+                    <div id="progress-bar"></div>
+                </div>
+
+                <script>
+                let updateInterval;
+
+                function toggleMusic() {
+                    fetch('/toggle-music')
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.status === 'playing') {
+                                startUpdatingProgress();
+                            } else {
+                                stopUpdatingProgress();
+                            }
+                        });
+                }
+
+                function startUpdatingProgress() {
+                    if (updateInterval) clearInterval(updateInterval);
+                    updateInterval = setInterval(() => {
+                        fetch('/get-progress')
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.is_playing) {
+                                    document.getElementById('progress-bar').style.width = `${data.progress}%`;
+                                } else {
+                                    stopUpdatingProgress();
+                                }
+                            });
+                    }, 1000); // Update every second
+                }
+
+                function stopUpdatingProgress() {
+                    clearInterval(updateInterval);
+                    document.getElementById('progress-bar').style.width = `0%`;
+                }
+
+                </script>
+            </div>
+            <br>
+            <br>
+            <section class="portfolio-block photography">
+                <div class="container">
+                    <div class="row g-0 justify-content-center">
+                        <div class="col-md-6 col-lg-4 item zoom-on-hover d-flex justify-content-center"><a href="#"><img class="img-fluid image" src="static/img/t-shirt.jpg"></a></div>
+                        <div class="col-md-6 col-lg-4 item zoom-on-hover d-flex justify-content-center"><a href="#"><img class="img-fluid image" src="static/img/hoodie.jpg"></a></div>
+                    </div>
+                </div>
+            </section>
+    </main>
+{% endblock %}
+```

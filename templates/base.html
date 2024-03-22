@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Newtify</title>
+    <meta name="description" content="Newtify - Like Spotify, but new!">
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap">
+    <link rel="stylesheet" href="static/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="static/css/pikaday.min.css">
+
+    <meta charset="UTF-8">
+    <title>Music Player</title>
+    <style>
+
+        body {
+            padding-top: 150px; /* Adjust this value based on the actual height of your navbar */
+        }
+        #progress-bar-container {
+            width: 100%;
+            background-color: #ddd;
+        }
+
+        #progress-bar {
+            width: 0%;
+            height: 30px;
+            background-color: #4CAF50;
+        }
+    </style>
+
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="static/img/Newtify.jpg" alt="Newtify Logo" style="height: 200px;">
+            </a>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+
+        </div>
+    </nav>
+    {% block body %}
+    {% endblock %}
+
+    <footer class="page-footer">
+        <div class="container">
+           
+            <div class="social-icons"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-instagram-outline"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a></div>
+        </div>
+        {% block footer %} 
+        {% endblock %}
+    </footer>
+    
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/js/pikaday.min.js"></script>
+    <script src="static/js/theme.js"></script>
+
+</body>
+
+</html>
