@@ -23,7 +23,7 @@ Challenge 4 - Legal
 
 Selected Challenges
 Challenge 1
-Challenge 3 hi
+Challenge 3
 
 Ideas\
 
