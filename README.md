@@ -24,8 +24,8 @@ Challenge 3 - Artists\
 Challenge 4 - Legal\
 - Copyright issues
 
-Selected Challenges\
-Challenge 1\
+Selected Challenges
+Challenge 1
 Challenge 3
 
 Ideas\
