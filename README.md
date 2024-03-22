@@ -26,7 +26,7 @@ Challenge 1
 Challenge 3
 
 Ideas
-User options
+User options\
 Idea 1 - 
 Idea 9 -
 
