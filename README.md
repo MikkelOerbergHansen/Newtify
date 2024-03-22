@@ -11,14 +11,14 @@ Challenge 1 - Competition
 - Big steaming platforms are too convenient
 
 Challenge 2 - Users
-- Users want songs for free\
-- Not a physical product\
+- Users want songs for free
+- Not a physical product
 - Can't really decide where the monthly payments go
 
 Challenge 3 - Artists
-- 1% makes all the money\
-- Not valued\
-- Litte power to negotiate\
+- 1% makes all the money
+- Not valued
+- Litte power to negotiate
 - Takes too much data space
 
 Challenge 4 - Legal
@@ -26,10 +26,10 @@ Challenge 4 - Legal
 
 Selected Challenges\
 Challenge 1\
-Challenge 3\
+Challenge 3
 
 
-Ideas\
+Ideas
 
 User options \
 Idea 1 - Users can buy merchandise \
@@ -40,7 +40,7 @@ Idea 5 - Discoverering new talent and music trends and supporting them and influ
 Idea 6 - Users would support artists with credits – invesment – folllow their growth \
 Idea 7 - Artists do commisions for fans requests for money \
 Idea 8 - Users can make requests for the artist \
-Idea 9 - Custom credit split\
+Idea 9 - Custom credit split
 
 Gamify\
 Idea 10 - There is a ranking system, an artist can see their top contributors\
