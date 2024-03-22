@@ -1,4 +1,4 @@
-# DPD: Newtify- test
+# DPD: Newtify
 DPD - Digital Product Development, module 3: The Startup Way
 
 This is the front page for the ressources regarding our digital product.
