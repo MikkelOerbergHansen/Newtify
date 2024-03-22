@@ -25,10 +25,18 @@ Selected Challenges
 Challenge 1
 Challenge 3
 
-Ideas
-User options\
-Idea 1 - \
-Idea 9 -
+Ideas\
+
+User options \
+Idea 1 - Users can buy merchandise \
+Idea 2 - User 2 user suggestions \
+Idea 3 - Super-likes for songs \
+Idea 4 - Users makes personal playlists \
+Idea 5 - Discoverering new talent and music trends and supporting them and influence direction in music \
+Idea 6 - Users would support artists with credits – invesment – folllow their growth \
+Idea 7 - Artists do commisions for fans requests for money \
+Idea 8 - Users can make requests for the artist \
+Idea 9 - Custom credit split\
 
 Gamify\
 Idea 10 - There is a ranking system, an artist can see their top contributors\
