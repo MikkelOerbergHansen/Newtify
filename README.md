@@ -3,27 +3,30 @@ DPD - Digital Product Development, module 3: The Startup Way
 
 This is the front page for the ressources regarding our digital product.
 
-##Problem Definition ho
+Problem Definition \
 Only 1% of (music industry) artists make all the money and users can't really decide where their montly payment go in the big convenient streaming platforms.
 
-#Challenges
-Challenge 1 - Competition
+Challenges \
+Challenge 1 - Competition \
 - Big steaming platforms are too convenient
-Challenge 2 - Users
-- Users want songs for free
-- Not a physical product
+
+Challenge 2 - Users\
+- Users want songs for free\
+- Not a physical product\
 - Can't really decide where the monthly payments go
-Challenge 3 - Artists
-- 1% makes all the money
-- Not valued
-- Litte power to negotiate
+
+Challenge 3 - Artists\
+- 1% makes all the money\
+- Not valued\
+- Litte power to negotiate\
 - Takes too much data space
-Challenge 4 - Legal
+
+Challenge 4 - Legal\
 - Copyright issues
 
-Selected Challenges
-Challenge 1
-Challenge 3 hi
+Selected Challenges\
+Challenge 1\
+Challenge 3
 
 Ideas\
 
