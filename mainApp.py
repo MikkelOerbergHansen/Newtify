@@ -26,6 +26,8 @@ def index():
     # The index.html should have a button that when clicked, sends a request to '/play-music'
     return render_template('index.html')
 
+
+
 @app.route('/toggle-music', methods=['GET'])
 def toggle_music():
     global is_playing, start_time
@@ -40,6 +42,8 @@ def toggle_music():
         start_time = time.time()
         return jsonify({'status': 'playing'}), 200
 
+
+
 @app.route('/get-progress', methods=['GET'])
 def get_progress():
     global song_duration
@@ -50,9 +54,13 @@ def get_progress():
     else:
         return jsonify({'progress': 0, 'is_playing': is_playing}), 200
 
+
+
 @app.route('/deep-dive')
 def deep_dive():
     return render_template('deep-dive.html')
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
