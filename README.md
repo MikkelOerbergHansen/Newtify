@@ -1,4 +1,4 @@
-# DPD: Newtify
+# DPD: Newtify TEST
 DPD - Digital Product Development, module 3: The Startup Way
 
 This is the front page for the ressources regarding our digital product.
@@ -7,7 +7,7 @@ Problem Definition \
 Only 1% of (music industry) artists make all the money and users can't really decide where their montly payment go in the big convenient streaming platforms.
 
 Challenges \
-Challenge 1 - Competition 
+Challenge 1 - Competition
 - Big steaming platforms are too convenient
 
 Challenge 2 - Users
@@ -71,7 +71,7 @@ Idea 30 - The platform will feature blog posts about tips and tricks\
 
 Premium options \
 Idea 31 - Users can perhaps book their artists for a private concert \
-Idea 32 - Premium users for bands 
+Idea 32 - Premium users for bands
 
 User 2 artist communication \
 Idea 33 - Band message with board/SoMe integrations \
@@ -79,7 +79,7 @@ Idea 34 - Each artists page is a community for fans and aritists to communicate 
 Idea 35 - Chat with artists for money \
 Idea 36 - Promote personal relation with artist \
 Idea 37 - Users can block artists and the other way around \
-Idea 38 - Personal thank you when given credits 
+Idea 38 - Personal thank you when given credits
 
 Platform specificiaton \
 Idea 39 - The platform will focus on exclusive releases \
@@ -92,7 +92,7 @@ Idea 45 - The platform is pretty and easy to use \
 Idea 46 - Maybe artists specific platforms \
 Idea 47 - Front page would show months new artists and releases and what is rising \
 Idea 48 - E-shop of real vinyl merch \
-Idea 49 - Social media for all artists 
+Idea 49 - Social media for all artists
 
 Monitization \
 Idea 50 - Monthly payments that goes to the songs that persons listen to during that month \
@@ -100,7 +100,7 @@ Idea 51 - Users can use their subscription payment for everything music, art, su
 Idea 52 - Part of the monthly payment goes to the platform then the user can modify their preference \
 Idea 53 - Donation goals for new songs/albums \
 Idea 54 - Offer donation option in return dfor concert/meeting \
-Idea 55 - Divide money to artists 
+Idea 55 - Divide money to artists
 
 Selected Ideas\
 Idea 1\
