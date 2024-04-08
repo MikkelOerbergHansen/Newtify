@@ -9,7 +9,7 @@ https://lucid.app/lucidchart/be81b2ff-c03e-40b4-81fc-82277b514a0f/edit?viewport_
 
 
 
-![E/R-Diagram](static/img/Newtify_ER-Diagramtest.png)
+![E/R-Diagram](static/img/Misc/Newtify_ER-Diagram.png)
 
 
 
