@@ -1,63 +1,70 @@
-```html
 {% extends 'base.html' %}
-{% block body %}
-        <section class="portfolio-block block-intro"><img src="static/img/album-cover-logo.jpg">
-            <div class="container">
-                <div class="about-me">
-                    <p><strong>TRUE</strong> Danish Black Metal, Nymåne</a>
-                </div>
-                <button onclick="toggleMusic()">Play</button>
-                <div id="progress-bar-container">
-                    <div id="progress-bar"></div>
-                </div>
 
-                <script>
-                let updateInterval;
-
-                function toggleMusic() {
-                    fetch('/toggle-music')
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.status === 'playing') {
-                                startUpdatingProgress();
-                            } else {
-                                stopUpdatingProgress();
-                            }
-                        });
-                }
-
-                function startUpdatingProgress() {
-                    if (updateInterval) clearInterval(updateInterval);
-                    updateInterval = setInterval(() => {
-                        fetch('/get-progress')
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.is_playing) {
-                                    document.getElementById('progress-bar').style.width = `${data.progress}%`;
-                                } else {
-                                    stopUpdatingProgress();
-                                }
-                            });
-                    }, 1000); // Update every second
-                }
-
-                function stopUpdatingProgress() {
-                    clearInterval(updateInterval);
-                    document.getElementById('progress-bar').style.width = `0%`;
-                }
-
-                </script>
-            </div>
-            <br>
-            <br>
-            <section class="portfolio-block photography">
-                <div class="container">
-                    <div class="row g-0 justify-content-center">
-                        <div class="col-md-6 col-lg-4 item zoom-on-hover d-flex justify-content-center"><a href="#"><img class="img-fluid image" src="static/img/t-shirt.jpg"></a></div>
-                        <div class="col-md-6 col-lg-4 item zoom-on-hover d-flex justify-content-center"><a href="#"><img class="img-fluid image" src="static/img/hoodie.jpg"></a></div>
-                    </div>
-                </div>
-            </section>
-    </main>
+{% block head %}
 {% endblock %}
-```
+
+{% block body %}
+<!-- Content -->
+<div class="container d-flex justify-content-center my-4 mb-5">
+    <div id="mobile-box">
+      <!-- Card -->
+      <div class="card">
+        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+          <!-- Album cover with adjusted object-fit -->
+          <img id="album-cover" class="card-img-top" src="" alt="Card image cap" style="width: 100%; height: 250px; object-fit: contain;">
+          <a href="#!">
+            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+          </a>
+        </div>
+        <div class="card-body text-center">
+          <h5 id="artist-name" class="h5 font-weight-bold"></h5>
+          <p id="song-name" class="mb-0"></p>
+  
+          <div class="container mt-5">
+            <audio id="audio-player" controls preload="none"></audio>
+            <div id="songs-list" class="list-group mt-3">
+                <!-- Songs will be added here dynamically -->
+            </div>
+        </div>
+        </div>
+      </div>
+      <!-- Card -->
+    </div>
+</div>
+<!-- Content -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const audioPlayer = document.getElementById('audio-player');
+    const songsList = document.getElementById('songs-list');
+    const albumCover = document.getElementById('album-cover');
+    const artistName = document.getElementById('artist-name');
+    const songName = document.getElementById('song-name'); // For updating the song name dynamically
+
+    const songs = [
+        {name: "Debt Crush", path: "static/music/Mother of All - Debt Crush.mp3", artist: "Mother of All", cover: "static/img/moa.jpg"},
+        {name: "Som Aldrig Før", path: "static/music/Nymaane - Som Aldrig Foer.mp3", artist: "Nymaane", cover: "static/img/album-cover-logo.jpg"}
+    ];
+
+    // Populate the list with songs
+    songs.forEach((song, index) => {
+        const songItem = document.createElement('button');
+        songItem.classList.add('list-group-item', 'list-group-item-action');
+        songItem.textContent = song.artist + " - " + song.name
+        songItem.onclick = function() {
+            audioPlayer.src = song.path;
+            audioPlayer.play();
+            albumCover.src = song.cover;
+            artistName.textContent = song.artist;
+            songName.textContent = song.name
+        };
+        songsList.appendChild(songItem);
+
+        // Automatically select the first song when the page loads
+        if (index === 0) {
+            songItem.click();
+        }
+    });
+});
+</script>
+{% endblock %}
