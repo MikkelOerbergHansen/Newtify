@@ -20,6 +20,13 @@ class Song(db.Model):
     artist = db.Column(db.String(255), nullable=False)
     cover = db.Column(db.String(255), nullable=False)
 
+
+### Note to mikkel: Add all class according to E/R diagram
+
+
+
+
+
 def add_songs():
     # Checking if there are any songs in the database
     if Song.query.count() == 0:
