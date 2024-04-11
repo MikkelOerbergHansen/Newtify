@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block body %}
+
 <!-- Content -->
 <div class="container d-flex justify-content-center my-4 mb-5">
     <div id="mobile-box">
@@ -33,30 +34,58 @@
 </div>
 <!-- Content -->
 
+<div class="sticky-player">
+  <div class="song-info">
+      <span id="sticky-artist-name">Artist Name</span> - <span id="sticky-song-name">Song Name</span>
+  </div>
+  <div class="player-controls">
+      <button id="prevSong">&#9664;&#9664;</button> <!-- Double left arrows for "Prev" -->
+      <button id="playPause">&#9658;/&#10074;&#10074;</button> <!-- Play/Pause symbols -->
+      <button id="nextSong">&#9654;&#9654;</button> <!-- Double right arrows for "Next" -->
+  </div>
+  <div class="song-progress">
+      <input type="range" id="songProgress" value="0">
+  </div>
+</div>
+
+
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const audioPlayer = document.getElementById('audio-player');
     const songsList = document.getElementById('songs-list');
     const albumCover = document.getElementById('album-cover');
+    // Main player IDs
     const artistName = document.getElementById('artist-name');
-    const songName = document.getElementById('song-name'); // For updating the song name dynamically
+    const songName = document.getElementById('song-name');
+    // Sticky player IDs
+    const stickyArtistName = document.getElementById('sticky-artist-name');
+    const stickySongName = document.getElementById('sticky-song-name');
 
-    const songs = [
-        {name: "Debt Crush", path: "static/music/Mother of All - Debt Crush.mp3", artist: "Mother of All", cover: "static/img/moa.jpg"},
-        {name: "Som Aldrig Før", path: "static/music/Nymaane - Som Aldrig Foer.mp3", artist: "Nymaane", cover: "static/img/album-cover-logo.jpg"}
-    ];
+    document.getElementById('playPause').addEventListener('click', function() {
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+    } else {
+        audioPlayer.pause();
+    }
+  });
 
+    // Assuming 'songs' is populated the same way as in your initial setup
+    const songs = {{ songs | tojson }};
+    
     // Populate the list with songs
     songs.forEach((song, index) => {
         const songItem = document.createElement('button');
         songItem.classList.add('list-group-item', 'list-group-item-action');
-        songItem.textContent = song.artist + " - " + song.name
+        songItem.textContent = song.artist + " - " + song.name;
         songItem.onclick = function() {
             audioPlayer.src = song.path;
             audioPlayer.play();
             albumCover.src = song.cover;
-            artistName.textContent = song.artist;
-            songName.textContent = song.name
+            artistName.textContent = song.artist; // Updates main player
+            songName.textContent = song.name; // Updates main player
+            stickyArtistName.textContent = song.artist; // Updates sticky player
+            stickySongName.textContent = song.name; // Updates sticky player
         };
         songsList.appendChild(songItem);
 
@@ -66,5 +95,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
 </script>
 {% endblock %}

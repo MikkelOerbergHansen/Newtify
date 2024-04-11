@@ -4,9 +4,101 @@
     <title>Newtifty - Like Spotify but newer</title>
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
     <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+    
+        // Function to toggle dark mode
+        function toggleDarkMode() {
+            body.classList.toggle('dark-mode');
+            // Save the current mode in localStorage
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+    
+        // Event listener for the toggle
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+    
+        // Check localStorage to see if dark mode was previously enabled
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+        }
+    });
+</script>
+
+    <style>
+        .sticky-player {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #282828; /* Spotify's dark theme color */
+            color: #fff;
+            padding: 10px;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.5); /* Soft shadow for depth */
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+        }
+
+        .song-info {
+            text-align: center;
+            margin-bottom: 5px; /* Space between song info and controls */
+        }
+
+        .player-controls {
+            display: flex;
+            justify-content: center; /* Center the control buttons */
+            margin-bottom: 5px; /* Space between controls and progress bar */
+        }
+
+        .player-controls button {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 24px; /* Larger icons */
+            cursor: pointer;
+            margin: 0 10px; /* Space around buttons */
+        }
+
+        .song-progress input[type="range"] {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        /* Default light mode styles */
+        body {
+            background-color: #FFF;
+            color: #000;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #333;
+        }
+
+        /* You can extend this to specific elements */
+        .card.dark-mode {
+            background-color: #444;
+        }
+
+        .sticky-player.dark-mode {
+            background-color: #282828; /* Example for your sticky player background */
+        }
+
+
+    </style>
+      
+
 </head>
 <body>
     {% block body %}{% endblock %}
     <script src="/static/js/script.js"></script>
+    <div class="container d-flex justify-content-center my-4 mb-5">
+        <button id="darkModeToggle">Toggle Dark Mode</button>
+    </div>
 </body>
 </html>
