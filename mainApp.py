@@ -62,7 +62,7 @@ def upload():
             return redirect(url_for('index'))
         else:
              return render_template('upload.html')
-    
+
 
 if __name__ == '__main__':
     with app.app_context():
