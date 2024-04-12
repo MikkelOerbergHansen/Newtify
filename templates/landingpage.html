@@ -1,0 +1,157 @@
+{% extends "base2.html" %} 
+
+
+
+
+
+{% block body %}
+
+<div class="container">
+  <br>
+
+  <h1 class="my-0 fw-normal">Welcome</h1>
+
+  <br>
+  <br>
+
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Mother Of All</h4>
+          </div>
+          <div class="card-body">
+            <img src="static/img/Mother_of_all.jpg" alt="band_pic" style= "width: 100%; height: 250px; object-fit: contain;">
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+
+          <div class="card-body">
+            <div class="card-body text-center">
+              <h5 id="artist-name" class="h5 font-weight-bold"></h5>
+              <p id="song-name" class="mb-0"></p>
+      
+                <div class="container mt-5">
+                    <audio id="audio-player" controls preload="none"></audio>
+                    <div id="songs-list" class="list-group mt-3">
+                        <!-- Songs will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          
+          <div class="card-body">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <!-- Album cover with adjusted object-fit -->
+              <img id="album-cover" class="card-img-top" src="" alt="Card image cap" style="width: 100%; height: 250px; object-fit: contain;">
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+</div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const audioPlayer = document.getElementById('audio-player');
+        const songsList = document.getElementById('songs-list');
+        const albumCover = document.getElementById('album-cover');
+        // Main player IDs
+        const artistName = document.getElementById('artist-name');
+        const songName = document.getElementById('song-name');
+        // Sticky player IDs
+        const stickyArtistName = document.getElementById('sticky-artist-name');
+        const stickySongName = document.getElementById('sticky-song-name');
+    
+        document.getElementById('playPause').addEventListener('click', function() {
+        if (audioPlayer.paused) {
+            audioPlayer.play();
+        } else {
+            audioPlayer.pause();
+        }
+      });
+    
+        // Assuming 'songs' is populated the same way as in your initial setup
+        const songs = {{ songs | tojson }};
+        
+        // Populate the list with songs
+        songs.forEach((song, index) => {
+            const songItem = document.createElement('button');
+            songItem.classList.add('list-group-item', 'list-group-item-action');
+            songItem.textContent = song.artist + " - " + song.name;
+            songItem.onclick = function() {
+                audioPlayer.src = song.path;
+                audioPlayer.play();
+                albumCover.src = song.cover;
+                artistName.textContent = song.artist; // Updates main player
+                songName.textContent = song.name; // Updates main player
+                stickyArtistName.textContent = song.artist; // Updates sticky player
+                stickySongName.textContent = song.name; // Updates sticky player
+            };
+            songsList.appendChild(songItem);
+    
+            // Automatically select the first song when the page loads
+            if (index === 0) {
+                songItem.click();
+            }
+        });
+    });
+    
+    </script>
+
+<div class="sticky-player">
+    <div class="song-info">
+        <span id="sticky-artist-name">Artist Name</span> - <span id="sticky-song-name">Song Name</span>
+    </div>
+    <div class="player-controls">
+        <button id="prevSong">&#9664;&#9664;</button> <!-- Double left arrows for "Prev" -->
+        <button id="playPause">&#9658;/&#10074;&#10074;</button> <!-- Play/Pause symbols -->
+        <button id="nextSong">&#9654;&#9654;</button> <!-- Double right arrows for "Next" -->
+    </div>
+    <div class="song-progress">
+        <input type="range" id="songProgress" value="0">
+    </div>
+  </div>
+
+
+
+
+<div class="container">
+    
+    <p>something</p>
+    <p>something</p>
+    <p>something</p>
+    <p>something</p>
+    <p>something</p>
+     
+
+</div>
+
+<br>
+<br>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

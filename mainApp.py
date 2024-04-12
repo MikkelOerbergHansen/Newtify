@@ -46,6 +46,9 @@ def index():
     songs_data = [{"name": song.name, "path": song.path, "artist": song.artist, "cover": song.cover} for song in songs]
     return render_template('index.html', songs=songs_data)
 
+
+
+
 @app.route('/upload', methods=['GET','POST'])
 def upload():
         if request.method == 'POST':
@@ -69,6 +72,79 @@ def upload():
             return redirect(url_for('index'))
         else:
              return render_template('upload.html')
+        
+
+
+
+@app.route('/test', methods=['GET','POST'])
+def test():
+    songs = Song.query.all()
+    print(songs[1])
+    # Convert song objects to a list of dictionaries to pass to the frontend
+    songs_data = [{"name": song.name, "path": song.path, "artist": song.artist, "cover": song.cover} for song in songs]
+    
+    return render_template('landingpage.html', songs=songs_data)
+
+
+
+
+
+@app.route('/loginPage', methods=['GET','POST'])
+def loginPage():
+    
+    
+    return render_template('loginPage.html')
+
+
+
+
+@app.route('/signupPage', methods=['GET','POST'])
+def signupPage():
+    
+    
+    return render_template('signupPage.html')
+
+
+
+
+
+@app.route('/FAQpage', methods=['GET','POST'])
+def FAQpage():
+    
+    
+    return render_template('FAQpage.html')
+
+
+
+
+
+@app.route('/ABOUTpage', methods=['GET','POST'])
+def ABOUTpage():
+    
+    
+    return render_template('ABOUTpage.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@app.route('/newpage', methods=['GET','POST'])
+def newpage():
+    
+    
+    return render_template('newpage.html')
+
+
 
 
 if __name__ == '__main__':
