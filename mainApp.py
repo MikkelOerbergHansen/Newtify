@@ -21,6 +21,8 @@ class Song(db.Model):
     cover = db.Column(db.String(255), nullable=False)
 
 
+
+
 ### Note to mikkel: Add all class according to E/R diagram
 
 
@@ -37,6 +39,8 @@ def add_songs():
         ]
         db.session.bulk_save_objects(songs)
         db.session.commit()
+
+
 
 @app.route('/')
 def index():
@@ -76,6 +80,8 @@ def upload():
 
 
 
+
+
 @app.route('/test', methods=['GET','POST'])
 def test():
     songs = Song.query.all()
@@ -84,6 +90,16 @@ def test():
     songs_data = [{"name": song.name, "path": song.path, "artist": song.artist, "cover": song.cover} for song in songs]
     
     return render_template('landingpage.html', songs=songs_data)
+
+
+@app.route('/DEMO', methods=['GET','POST'])
+def DEMO():
+    songs = Song.query.all()
+    print(songs[1])
+    # Convert song objects to a list of dictionaries to pass to the frontend
+    songs_data = [{"name": song.name, "path": song.path, "artist": song.artist, "cover": song.cover} for song in songs]
+    
+    return render_template('DEMOpage.html', songs=songs_data)
 
 
 
@@ -126,7 +142,11 @@ def ABOUTpage():
 
 
 
-
+@app.route('/Mission', methods=['GET','POST'])
+def Mission():
+    
+    
+    return render_template('Mission.html')
 
 
 
