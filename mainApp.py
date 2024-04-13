@@ -83,7 +83,7 @@ def upload():
 
 
 @app.route('/test', methods=['GET','POST'])
-def test():
+def landingpage():
     songs = Song.query.all()
     print(songs[1])
     # Convert song objects to a list of dictionaries to pass to the frontend
