@@ -2,6 +2,7 @@ from flask import Flask, render_template, jsonify, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import os
 from werkzeug.utils import secure_filename
+from custom_functions.Misc import *
 
 # Assuming these directories exist under your static directory
 MUSIC_FOLDER = os.path.join('static', 'music')
@@ -84,12 +85,9 @@ def upload():
 
 @app.route('/test', methods=['GET','POST'])
 def landingpage():
-    songs = Song.query.all()
-    print(songs[1])
-    # Convert song objects to a list of dictionaries to pass to the frontend
-    songs_data = [{"name": song.name, "path": song.path, "artist": song.artist, "cover": song.cover} for song in songs]
     
-    return render_template('landingpage.html', songs=songs_data)
+    
+    return render_template('landingpage.html')
 
 
 @app.route('/DEMO', methods=['GET','POST'])
@@ -107,6 +105,19 @@ def DEMO():
 
 @app.route('/loginPage', methods=['GET','POST'])
 def loginPage():
+    if request.method == 'POST':
+            email = request.form["email"]
+            password = request.form["password"]
+            remember = request.form.get("remember")
+            checkstatus = loginCheck(email,password)
+            if checkstatus == True:
+                 userinfo = getUserInfo(email,password)
+                 id = userinfo["id"]
+                 type = userinfo["type"]
+                 return redirect("/welcome/{}/{}".format(id,type))
+            else:
+                 errormessage = "please check your input and try again"
+                 return render_template('loginPage.html', errormessage = errormessage)
     
     
     return render_template('loginPage.html')
@@ -149,7 +160,13 @@ def Mission():
     return render_template('Mission.html')
 
 
-
+@app.route('/welcome/<id>/<type>', methods=['GET','POST'])
+def welcome(id,type):
+    print(id)
+    print(type)
+    
+    
+    return render_template('newpage.html')
 
 
 
