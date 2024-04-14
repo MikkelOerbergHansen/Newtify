@@ -187,7 +187,10 @@ def signupPage():
             db.session.add(new_user)
             db.session.commit()
 
-            return redirect("/SignUp-Succes")
+            user = Users.query.filter_by(username=request.form.get("username")).first()
+            login_user(user)
+
+            return redirect("/profile")
     
     return render_template('signupPage.html')
 
@@ -224,18 +227,8 @@ def Mission():
 @login_required
 def profile():
     
-    
-    
     return render_template('profile.html', name=current_user.username)
 
-
-
-
-@app.route("/SignUp-Succes", methods=['GET','POST'])
-def signupSucces():
-    
-    
-    return render_template('signup_succes.html')
 
 
 
