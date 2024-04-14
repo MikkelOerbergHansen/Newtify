@@ -3,16 +3,44 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from werkzeug.utils import secure_filename
 from custom_functions.Misc import *
+from flask_login import LoginManager
+from flask_login import UserMixin, login_user, logout_user, current_user, login_required
 
 # Assuming these directories exist under your static directory
 MUSIC_FOLDER = os.path.join('static', 'music')
 COVER_FOLDER = os.path.join('static', 'img')
 
+
+
+
+
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///music_player.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config["SECRET_KEY"] = "abc"
 db = SQLAlchemy(app)
+
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+
+
+class Users(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(250), unique=True,
+                         nullable=False)
+    password = db.Column(db.String(250),
+                         nullable=False)
+
+
+@login_manager.user_loader
+def loader_user(user_id):
+    return Users.query.get(user_id)
+
+
+
 
 class Song(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -83,6 +111,10 @@ def upload():
 
 
 
+
+
+
+
 @app.route('/test', methods=['GET','POST'])
 def landingpage():
     
@@ -106,18 +138,29 @@ def DEMO():
 @app.route('/loginPage', methods=['GET','POST'])
 def loginPage():
     if request.method == 'POST':
-            email = request.form["email"]
+            username = request.form["username"]
             password = request.form["password"]
             remember = request.form.get("remember")
-            checkstatus = loginCheck(email,password)
-            if checkstatus == True:
-                 userinfo = getUserInfo(email,password)
-                 id = userinfo["id"]
-                 type = userinfo["type"]
-                 return redirect("/welcome/{}/{}".format(id,type))
-            else:
-                 errormessage = "please check your input and try again"
-                 return render_template('loginPage.html', errormessage = errormessage)
+
+            user = Users.query.filter_by(username=request.form.get("username")).first()
+
+            if not user or user.password != password:
+                error_message ="check your input"
+                return render_template('loginPage.html', errormessage = error_message)
+        
+
+            login_user(user)
+
+########################################## vi prøver python login manager
+##
+## https://www.geeksforgeeks.org/how-to-add-authentication-to-your-app-with-flask-login/
+##
+## https://www.digitalocean.com/community/tutorials/how-to-add-authentication-to-your-app-with-flask-login
+##
+
+
+            return redirect('/profile')
+            
     
     
     return render_template('loginPage.html')
@@ -127,7 +170,24 @@ def loginPage():
 
 @app.route('/signupPage', methods=['GET','POST'])
 def signupPage():
-    
+    if request.method == 'POST':
+            username = request.form["username"]
+            password = request.form["password"]
+            print(username)
+            print(password)
+            ### right now the username has to be unique
+            user = Users.query.filter_by(username=username).first()
+            if user: # if a user is found, we want to redirect back to signup page so user can try again
+                error_message ="this user already exist"
+                print("test")
+                return render_template('signupPage.html', errormessage = error_message)
+
+            # Add entry to the database
+            new_user = Users(username=username, password=password)
+            db.session.add(new_user)
+            db.session.commit()
+
+            return redirect("/SignUp-Succes")
     
     return render_template('signupPage.html')
 
@@ -140,8 +200,6 @@ def FAQpage():
     
     
     return render_template('FAQpage.html')
-
-
 
 
 
@@ -160,13 +218,33 @@ def Mission():
     return render_template('Mission.html')
 
 
-@app.route('/welcome/<id>/<type>', methods=['GET','POST'])
-def welcome(id,type):
-    print(id)
-    print(type)
+
+
+@app.route('/profile', methods=['GET','POST'])
+@login_required
+def profile():
     
     
-    return render_template('newpage.html')
+    
+    return render_template('profile.html', name=current_user.username)
+
+
+
+
+@app.route("/SignUp-Succes", methods=['GET','POST'])
+def signupSucces():
+    
+    
+    return render_template('signup_succes.html')
+
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return render_template('logout.html')
+
 
 
 
