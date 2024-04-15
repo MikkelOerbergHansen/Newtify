@@ -179,7 +179,6 @@ def signupPage():
             user = Users.query.filter_by(username=username).first()
             if user: # if a user is found, we want to redirect back to signup page so user can try again
                 error_message ="this user already exist"
-                print("test")
                 return render_template('signupPage.html', errormessage = error_message)
 
             # Add entry to the database

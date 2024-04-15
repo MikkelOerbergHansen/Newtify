@@ -42,6 +42,7 @@
             position: fixed;
             bottom: 0;
             left: 0;
+            height: 90px;
             width: 100%;
             background-color: #282828; /* Spotify's dark theme color */
             color: #fff;
@@ -49,6 +50,7 @@
             box-shadow: 0 -2px 5px rgba(0,0,0,0.5); /* Soft shadow for depth */
             display: flex;
             flex-direction: column; /* Stack items vertically */
+            z-index: 1;
         }
 
         .song-info {
@@ -98,10 +100,11 @@
 
         
         .myfootercontainer {
-        position: fixed;
+        position: relative;
         background: inherit;
         left: 0;
         bottom: 0;
+        height: 100px;
         width: 100%;
         text-align: center;
         z-index:3;
@@ -122,7 +125,6 @@
 
         main{
         margin-top: 100px;
-        margin-bottom: 150px;
         }
 
         .mycontainer{
@@ -268,26 +270,27 @@
 
 
         
-            <script src="/static/js/script.js"></script>
             <div class="myfootercontainer">
                 <div class="container">
-                
-                    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-                    <div class="col-md-4 d-flex align-items-center">
-                        <a href="/test" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-                            <img src="/static/img/logo.png" alt="logo" style= "width: 100%; height: 50px; object-fit: contain;">
-                        </a>
-                        <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Company, Inc</span>
-                    </div>
-                    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                        <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
-                        <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
-                        <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
-                    </ul>
-                    </footer>
-                    <div class="container d-flex justify-content-center my-4 mb-5">
+                    
+                    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-2 border-top">
+                        <div class="col-md-4 d-flex align-items-center">
+                            <a href="/test" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                                <img src="/static/img/logo.png" alt="logo" style= "width: 100%; height: 50px; object-fit: contain;">
+                            </a>
+                            <p class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Company, Inc</p>
+                        </div>
+
                         <button id="darkModeToggle" class="btn btn-primary">Toggle Dark Mode</button>
-                    </div>
+
+                        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                            <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
+                            <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+                            <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
+                        </ul>
+
+                    </footer>
+                    
                 </div>
             </div>
         
