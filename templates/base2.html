@@ -104,7 +104,7 @@
         bottom: 0;
         width: 100%;
         text-align: center;
-        z-index:1;
+        z-index:3;
         }
 
         .myheadercontainer {
@@ -118,7 +118,6 @@
             z-index:3;
         }
 
-        
         
 
         main{
@@ -136,6 +135,7 @@
         align-content: center;
         align-self: center;
         justify-content: center;
+        z-index:1;
         }
 
 
@@ -230,7 +230,8 @@
                             <li><a href="/DEMO" class="nav-link px-2">DEMO</a></li>
                             <li><a href="/Mission" class="nav-link px-2">Mission</a></li>
                         </ul>
-                
+
+                        
                         <div class="col-md-3 text-end">
                             {% if not current_user.is_authenticated %}
                             <button type="button" class="btn btn-outline-primary me-2"onclick=
@@ -239,10 +240,11 @@
                             "window.location.href = '/signupPage';">Sign-up</button>
                             {% endif %}
                             {% if current_user.is_authenticated %}
-                            <button type="button" class="btn btn-outline-primary me-2"onclick=
+                            <button type="button" class="btn btn-outline-primary me-2" onclick=
                             "window.location.href = '/logout';">Log Out</button>
                             {% endif %}
                         </div>
+                        
                     </header>
                 </div>
             </div>
